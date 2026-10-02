@@ -29,6 +29,10 @@ export const metadata: Metadata = {
   description: siteConfig.seo.metaDescription,
   keywords: siteConfig.seo.keywords,
   viewport: 'width=device-width, initial-scale=1.0',
+  icons: {
+    icon: '/icon.png',
+    apple: '/apple-icon.png',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_NG',
