@@ -7,116 +7,137 @@ import { MessageCircle, Eye } from 'lucide-react'
 
 export default function Hero() {
   const heroImages = [
+    'event-wedding-cake-three-tier',
     'food-jollof-chicken-plantain',
-    'smallchops-tray-puffpuff',
-    'food-meat-skewers',
     'cake-oreo-drip',
+    'smallchops-boxed-bulk-order',
+  ]
+
+  const features = [
+    'Custom cakes',
+    'Small chops',
+    'Event setup & decoration',
   ]
 
   const whatsappMessage = "Hi! I'd like to order. Can you tell me about your services?"
   const whatsappLink = getWhatsAppLink(whatsappMessage)
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 10 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8 },
+      transition: { duration: 0.6 },
     },
   }
 
   return (
-    <section id="hero" className="relative bg-[#0F0F0F] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-24 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-        {/* Left: Text Content */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          className="space-y-6 md:space-y-8"
-        >
-          <motion.h1
-            variants={itemVariants}
-            className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight text-[#F7F2EA]"
-          >
-            Cakes, Catering & Events{' '}
-            <span className="text-[#E8493F]">Done Right</span>
-          </motion.h1>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-[#B8B2A7] text-lg md:text-xl max-w-md leading-relaxed"
-          >
-            Premium custom cakes, authentic Nigerian food, and professional event planning for every celebration.
-          </motion.p>
-
-          {/* CTA Buttons */}
+    <section id="hero" className="relative bg-bg-cream overflow-hidden min-h-[80vh]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left: Text Content */}
           <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-4 pt-4"
+            initial="hidden"
+            animate="visible"
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+            className="space-y-6 md:space-y-8 flex flex-col justify-center"
           >
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-[#E8493F] hover:bg-[#d63930] text-[#F7F2EA] px-8 py-4 rounded-xl font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-[#E8493F]/20 text-base"
-            >
-              <MessageCircle size={20} />
-              Order on WhatsApp
-            </a>
-            <a
-              href="#gallery"
-              className="flex items-center justify-center gap-2 bg-[#1A1A1A] hover:bg-[#2A2A2A] text-[#F7F2EA] px-8 py-4 rounded-xl font-semibold transition-all duration-200 border border-[#2A2A2A] text-base"
-            >
-              <Eye size={20} />
-              See Our Work
-            </a>
-          </motion.div>
-        </motion.div>
+            {/* Eyebrow Label */}
+            <motion.div variants={itemVariants}>
+              <span className="text-accent-coral uppercase text-sm font-semibold tracking-widest">
+                Lagos · Cakes · Catering · Events
+              </span>
+            </motion.div>
 
-        {/* Right: Image Collage */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="grid grid-cols-2 gap-4 md:gap-6 h-fit"
-        >
-          {heroImages.map((imageId, index) => {
-            const item = galleryItems.find((i) => i.id === imageId)
-            if (!item) return null
+            {/* Headline */}
+            <motion.h1
+              variants={itemVariants}
+              className="font-heading font-bold text-5xl sm:text-6xl lg:text-7xl leading-tight text-text-charcoal"
+            >
+              Cakes, catering & <span className="italic text-accent-coral">celebrations</span> done right
+            </motion.h1>
 
-            return (
-              <motion.div
-                key={imageId}
-                className={`relative rounded-2xl overflow-hidden shadow-lg ${
-                  index === 0 || index === 3 ? 'md:col-span-1' : 'md:col-span-1'
-                } ${index === 0 ? 'md:row-span-2' : ''}`}
-                whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
+            {/* Subtext */}
+            <motion.p
+              variants={itemVariants}
+              className="text-text-muted text-base md:text-lg max-w-md leading-relaxed"
+            >
+              Premium custom cakes, authentic Nigerian food, and seamless event planning for every milestone.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-accent-coral hover:bg-accent-coral-dark text-white px-8 py-4 rounded-full font-semibold transition-all duration-200 hover:shadow-soft-md text-base"
               >
-                <div className="relative w-full aspect-square md:aspect-auto">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className="object-cover"
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                  />
-                </div>
-              </motion.div>
-            )
-          })}
-        </motion.div>
+                <MessageCircle size={20} />
+                Order on WhatsApp
+              </a>
+              <a
+                href="#gallery"
+                className="flex items-center justify-center gap-2 bg-bg-white hover:bg-bg-blush text-accent-coral-dark px-8 py-4 rounded-full font-semibold transition-all duration-200 border-2 border-accent-coral text-base"
+              >
+                <Eye size={20} />
+                See our work
+              </a>
+            </motion.div>
+
+            {/* Feature Chips */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap gap-3 pt-2"
+            >
+              {features.map((feature) => (
+                <span
+                  key={feature}
+                  className="bg-bg-blush text-text-charcoal px-4 py-2 rounded-full text-sm font-medium border border-accent-coral/20"
+                >
+                  {feature}
+                </span>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Image Collage - 2x2 Grid */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="grid grid-cols-2 gap-4 md:gap-6 lg:translate-y-6"
+          >
+            {heroImages.map((imageId, index) => {
+              const item = galleryItems.find((i) => i.id === imageId)
+              if (!item) return null
+
+              return (
+                <motion.div
+                  key={imageId}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 + index * 0.05 }}
+                  className="relative rounded-2xl overflow-hidden shadow-soft"
+                >
+                  <div className="relative w-full aspect-[4/5]">
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      priority={index < 2}
+                      className="object-cover"
+                      sizes="(max-width: 768px) 45vw, (max-width: 1024px) 25vw, 22vw"
+                    />
+                  </div>
+                </motion.div>
+              )
+            })}
+          </motion.div>
+        </div>
       </div>
     </section>
   )

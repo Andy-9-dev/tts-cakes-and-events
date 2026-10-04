@@ -61,20 +61,21 @@ export default function Lightbox({
             className="relative w-full max-w-4xl max-h-[90vh] flex flex-col"
           >
             {/* Image */}
-            <div className="relative flex-1 bg-[#1A1A1A] rounded-lg overflow-hidden">
+            <div className="relative flex-1 bg-bg-white rounded-lg overflow-hidden">
               <Image
                 src={image.src}
                 alt={image.alt}
                 fill
                 className="object-contain"
                 priority
+                sizes="(max-width: 1024px) 100vw, 80vw"
               />
             </div>
 
             {/* Info */}
-            <div className="bg-[#1A1A1A] p-4 md:p-6 rounded-b-lg">
-              <p className="text-[#B8B2A7] text-sm md:text-base">{image.alt}</p>
-              <p className="text-[#E8493F] text-xs md:text-sm font-semibold mt-2">
+            <div className="bg-bg-white p-4 md:p-6 rounded-b-lg">
+              <p className="text-text-charcoal text-sm md:text-base">{image.alt}</p>
+              <p className="text-accent-coral text-xs md:text-sm font-semibold mt-2">
                 {image.category}
               </p>
             </div>
@@ -82,7 +83,7 @@ export default function Lightbox({
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 bg-[#E8493F] hover:bg-[#d63930] text-white p-2 rounded-full transition-colors z-10"
+              className="absolute top-4 right-4 bg-accent-coral hover:bg-accent-coral-dark text-white p-2 rounded-full transition-colors z-10"
               aria-label="Close lightbox"
             >
               <X size={24} />
@@ -91,7 +92,7 @@ export default function Lightbox({
             {/* Navigation Buttons */}
             <button
               onClick={onPrev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#E8493F]/80 hover:bg-[#E8493F] text-white p-2 rounded-full transition-colors"
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-accent-coral/80 hover:bg-accent-coral text-white p-2 rounded-full transition-colors"
               aria-label="Previous image"
             >
               <ChevronLeft size={24} />
@@ -99,14 +100,14 @@ export default function Lightbox({
 
             <button
               onClick={onNext}
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#E8493F]/80 hover:bg-[#E8493F] text-white p-2 rounded-full transition-colors"
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-accent-coral/80 hover:bg-accent-coral text-white p-2 rounded-full transition-colors"
               aria-label="Next image"
             >
               <ChevronRight size={24} />
             </button>
 
             {/* Keyboard hint */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[#B8B2A7] text-xs opacity-60">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-xs opacity-60">
               Esc to close • ← → to navigate
             </div>
           </motion.div>

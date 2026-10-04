@@ -1,6 +1,6 @@
 # Quick Start Guide - TTS Cakes and Events Website
 
-Get your website running in 5 minutes.
+Get your light, warm, premium website running in 5 minutes.
 
 ## 1. Installation (1 minute)
 
@@ -20,21 +20,42 @@ Visit **http://localhost:3000** in your browser. Your site is live! 🎉
 
 All business information is in **`src/data/site.ts`**:
 
-- Business name, phone, WhatsApp number
-- Services and descriptions
-- Gallery images and categories
-- Testimonials
+- Business name, phone numbers (2x), WhatsApp number
+- Services (4 items with images)
+- Gallery images (16+ items with categories)
+- Testimonials (exactly 2 quotes)
+- Videos (4 videos with autoplay)
 - Social media links
 
-### Example: Update Phone Number
+### Example: Update Phone Numbers
 
 ```typescript
 // src/data/site.ts, line ~21
 contact: {
-  phoneNumbers: ['YOUR_PHONE_HERE', '08123456789'],
-  whatsappNumber: '234YOUR_NUMBER', // International format, no +
+  phoneNumbers: ['08023581524', '08148204980'], // Primary + backup
+  whatsappNumber: '2348023581524', // International format, no +
   // ... rest of config
 }
+```
+
+### Example: Edit Testimonials
+
+```typescript
+// src/data/site.ts, line ~190
+export const testimonials = [
+  {
+    id: 1,
+    quote: 'Fine ma. It\'s very nice. We loved it. Thanks',
+    name: '[FIRST NAME + INITIAL]', // TODO: Replace with real name
+    detail: '[WHAT THEY ORDERED]',   // TODO: Replace with order details
+  },
+  {
+    id: 2,
+    quote: 'I will always return to you ma. Thank you so much!',
+    name: '[FIRST NAME + INITIAL]', // TODO: Replace with real name
+    detail: '[WHAT THEY ORDERED]',   // TODO: Replace with order details
+  },
+];
 ```
 
 ### Example: Add a New Service
@@ -47,43 +68,47 @@ export const services = [
     title: 'Your Service Name',
     description: 'Description of your service',
     image: 'service-image-id', // Must match image in galleryItems
-    cta: 'Order Now',
     message: "Hi, I'd like to order...",
   },
   // ... more services
 ]
 ```
 
-### Example: Add a Testimonial
-
-```typescript
-// src/data/site.ts, line ~225
-export const testimonials = [
-  {
-    id: 1,
-    name: 'Customer Name',
-    title: 'Customer Title',
-    message: "What the customer said about your business",
-    rating: 5,
-  },
-  // ... more testimonials
-]
-```
-
 ### Example: Replace Images
 
-1. Replace SVG placeholders in `public/images/` with real images (WebP format recommended)
-2. Update image references in `src/data/site.ts` if filenames change
+1. Replace .webp files in `public/images/` with real images
+2. Use category prefixes: `cake-*`, `food-*`, `smallchops-*`, `event-*`
+3. Recommended format: WebP (best performance)
 
 ```typescript
 {
   id: 'cake-oreo-drip',
-  src: '/images/cake-oreo-drip.webp', // Change .svg to .webp
+  src: '/images/cake-oreo-drip.webp',
   alt: 'Oreo drip cake with glossy chocolate coating',
   category: 'Cakes',
   categoryTag: 'Cakes',
 }
 ```
+
+### Example: Add Videos
+
+```typescript
+// src/data/site.ts, line ~240
+export const videoItems = [
+  {
+    id: 'video-new-cake',
+    src: '/videos/video-new-cake.mp4',
+    poster: '/videos/video-new-cake.jpg',
+  },
+  // ... more videos
+];
+```
+
+Features:
+- IntersectionObserver: Auto-plays when 50% visible
+- Max 2 videos playing simultaneously
+- Manual play button for accessibility
+- Full prefers-reduced-motion support
 
 ## 4. Build for Production (2 minutes)
 
@@ -101,6 +126,18 @@ Your production build is ready! Visit http://localhost:3000
 3. Click "New Project" → Select your repository → Click "Deploy"
 
 ✨ Your site is live!
+
+---
+
+## Color Palette (Light, Warm, Premium)
+
+**Light Theme Tokens** (defined in `tailwind.config.ts`):
+
+- **Background**: Cream `#FBF6EE` (primary), White `#FFFFFF` (cards), Blush `#FFF1EC` (alternates)
+- **Text**: Charcoal `#2A2320` (primary), Muted `#6B605A` (secondary)
+- **Accent**: Coral `#E8493F` (decorative), Coral-Dark `#C9372E` (buttons, AA contrast)
+- **Gold**: `#F5B335` (small touches only)
+- **Dark Sections**: `#1A1514` (contact, footer backgrounds)
 
 ---
 
@@ -133,28 +170,36 @@ Edit `tailwind.config.ts`:
 
 ```typescript
 colors: {
+  bg: {
+    cream: '#FBF6EE',      // Your color
+    white: '#FFFFFF',
+    blush: '#FFF1EC',
+  },
   accent: {
-    coral: '#E8493F',   // Change this
-    gold: '#F5B335',    // Or this
+    coral: '#E8493F',      // Your color
+    'coral-dark': '#C9372E',
   },
 }
 ```
 
 Then rebuild: `npm run build`
 
-### Change Font
+### Change Fonts
 
-Fonts are loaded in `src/app/layout.tsx`:
+Fonts are loaded in `src/app/layout.tsx`. Use any Google Font:
 
 ```typescript
-import { Fraunces, DM_Sans } from 'next/font/google'
+import { NewFont } from 'next/font/google'
 
-// Change to different fonts from Google Fonts
+const newFont = NewFont({
+  subsets: ['latin'],
+  variable: '--font-heading',
+})
 ```
 
 ### Add a New Section
 
-1. Create new component in `src/components/`
+1. Create new component in `src/components/` (e.g., `NewSection.tsx`)
 2. Import it in `src/app/page.tsx`
 3. Add it to the JSX
 
@@ -164,7 +209,7 @@ import NewSection from '@/components/NewSection'
 
 export default function Home() {
   return (
-    <main>
+    <main className="bg-bg-cream min-h-screen">
       <Header />
       <Hero />
       <NewSection />  {/* ← Add here */}
@@ -174,9 +219,13 @@ export default function Home() {
 }
 ```
 
-### Fix Broken Links
+### Fix WhatsApp Links
 
-All WhatsApp links use the config in `src/data/site.ts`. Just update the phone number there and all links automatically update.
+All WhatsApp links use the config in `src/data/site.ts`. Just update:
+- `phoneNumbers` array (2 phone numbers)
+- `whatsappNumber` in international format (234XXXXXXXXXX)
+
+All links automatically update.
 
 ## Troubleshooting
 

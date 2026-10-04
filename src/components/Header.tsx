@@ -27,30 +27,30 @@ export default function Header() {
     { label: 'Contact', href: '#contact' },
   ]
 
-  const whatsappMessage = "Hi! 👋 I'd like to enquire about your services."
+  const whatsappMessage = "Hi! I'd like to enquire about your services."
   const whatsappLink = getWhatsAppLink(whatsappMessage)
 
   return (
     <header
       className={`sticky top-0 z-40 transition-all duration-300 ${
-        isScrolled ? 'bg-[#1A1A1A] shadow-lg' : 'bg-[#0F0F0F]'
+        isScrolled
+          ? 'bg-bg-white shadow-soft'
+          : 'bg-bg-cream'
       }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="#" className="flex-shrink-0 flex items-center gap-2 group">
-          <div className="relative w-10 h-10">
+        {/* Logo - Circular */}
+        <Link href="#" className="flex-shrink-0 group">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden bg-text-charcoal flex items-center justify-center border-2 border-text-charcoal">
             <Image
               src={logoImage.src}
               alt={logoImage.alt}
               fill
-              className="object-contain"
+              className="object-cover"
               priority
+              sizes="48px"
             />
           </div>
-          <span className="hidden sm:inline font-heading font-bold text-lg text-[#F7F2EA] group-hover:text-[#E8493F] transition-colors">
-            TTS Cakes
-          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -59,7 +59,7 @@ export default function Header() {
             <Link
               key={link.label}
               href={link.href}
-              className="text-[#B8B2A7] hover:text-[#E8493F] transition-colors text-sm font-medium"
+              className="text-text-muted hover:text-accent-coral-dark transition-colors text-sm font-medium"
             >
               {link.label}
             </Link>
@@ -72,7 +72,7 @@ export default function Header() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#E8493F] hover:bg-[#d63930] text-[#F7F2EA] px-6 py-2 rounded-lg font-medium transition-colors text-sm"
+            className="flex items-center gap-2 bg-accent-coral hover:bg-accent-coral-dark text-white px-6 py-2 rounded-full font-medium transition-colors text-sm"
           >
             <MessageCircle size={18} />
             Chat
@@ -82,7 +82,7 @@ export default function Header() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 hover:bg-[#1A1A1A] rounded-lg transition-colors text-[#F7F2EA]"
+          className="md:hidden p-2 hover:bg-bg-blush rounded-lg transition-colors text-text-charcoal"
           aria-label="Toggle menu"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -95,13 +95,13 @@ export default function Header() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="md:hidden bg-[#1A1A1A] border-t border-[#2A2A2A] px-4 py-4 space-y-3"
+          className="md:hidden bg-bg-white border-t border-bg-blush px-4 py-4 space-y-3"
         >
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="block text-[#B8B2A7] hover:text-[#E8493F] transition-colors py-2 font-medium"
+              className="block text-text-muted hover:text-accent-coral-dark transition-colors py-2 font-medium"
               onClick={() => setIsOpen(false)}
             >
               {link.label}
@@ -111,7 +111,7 @@ export default function Header() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full bg-[#E8493F] hover:bg-[#d63930] text-[#F7F2EA] px-4 py-3 rounded-lg font-medium transition-colors text-center mt-4"
+            className="block w-full bg-accent-coral hover:bg-accent-coral-dark text-white px-4 py-3 rounded-full font-medium transition-colors text-center mt-4"
             onClick={() => setIsOpen(false)}
           >
             Chat on WhatsApp

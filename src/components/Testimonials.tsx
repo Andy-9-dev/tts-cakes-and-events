@@ -2,7 +2,6 @@
 
 import { testimonials } from '@/data/site'
 import { motion } from 'framer-motion'
-import { Star } from 'lucide-react'
 
 export default function Testimonials() {
   const containerVariants = {
@@ -24,8 +23,11 @@ export default function Testimonials() {
     },
   }
 
+  // Only show first 2 testimonials
+  const displayTestimonials = testimonials.slice(0, 2)
+
   return (
-    <section id="testimonials" className="bg-[#0F0F0F] py-16 md:py-24">
+    <section className="bg-bg-cream py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -35,53 +37,48 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-[#F7F2EA] mb-4">
-            Customer Love
+          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-charcoal mb-4">
+            What our clients say
           </h2>
-          <p className="text-[#B8B2A7] text-lg md:text-xl">
-            See what our clients have to say
-          </p>
         </motion.div>
 
-        {/* Testimonials Grid */}
+        {/* Testimonials Grid - exactly 2 cards */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-2xl mx-auto"
         >
-          {testimonials.map((testimonial) => (
-            <motion.div
-              key={testimonial.id}
-              variants={itemVariants}
-              className="bg-[#1A1A1A] p-6 md:p-8 rounded-2xl border border-[#2A2A2A] hover:border-[#E8493F] transition-all duration-300 hover:shadow-lg hover:shadow-[#E8493F]/10"
-            >
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    size={18}
-                    className="fill-[#F5B335] text-[#F5B335]"
-                  />
-                ))}
-              </div>
+          {displayTestimonials.map((testimonial) => {
+            // Check if name is still a placeholder
+            const isPlaceholder = testimonial.name.includes('[')
 
-              {/* Message */}
-              <p className="text-[#B8B2A7] text-base leading-relaxed mb-6 italic">
-                "{testimonial.message}"
-              </p>
-
-              {/* Author */}
-              <div>
-                <p className="font-heading font-bold text-[#F7F2EA] text-base">
-                  {testimonial.name}
+            return (
+              <motion.div
+                key={testimonial.id}
+                variants={itemVariants}
+                className="bg-bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-soft-md transition-all duration-300"
+              >
+                {/* Quote */}
+                <p className="text-text-charcoal text-base md:text-lg leading-relaxed mb-6 italic">
+                  "{testimonial.quote}"
                 </p>
-                <p className="text-[#E8493F] text-sm">{testimonial.title}</p>
-              </div>
-            </motion.div>
-          ))}
+
+                {/* Name and Detail - hidden if placeholder */}
+                {!isPlaceholder && (
+                  <div>
+                    <p className="font-heading font-bold text-text-charcoal text-base">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-accent-coral-dark text-sm">
+                      {testimonial.detail}
+                    </p>
+                  </div>
+                )}
+              </motion.div>
+            )
+          })}
         </motion.div>
       </div>
     </section>

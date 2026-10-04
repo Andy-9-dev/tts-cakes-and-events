@@ -9,7 +9,7 @@ export default function HowItWorks() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   }
@@ -24,7 +24,7 @@ export default function HowItWorks() {
   }
 
   return (
-    <section id="how-it-works" className="bg-[#0F0F0F] py-16 md:py-24">
+    <section id="how-it-works" className="bg-bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -34,11 +34,11 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-[#F7F2EA] mb-4">
-            How It Works
+          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-charcoal mb-4">
+            How it works
           </h2>
-          <p className="text-[#B8B2A7] text-lg md:text-xl">
-            Simple steps to bring your celebration to life
+          <p className="text-text-muted text-lg md:text-xl">
+            Four simple steps to bring your celebration to life
           </p>
         </motion.div>
 
@@ -47,7 +47,7 @@ export default function HowItWorks() {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: '-50px' }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
         >
           {howItWorks.map((step) => (
@@ -56,27 +56,22 @@ export default function HowItWorks() {
               variants={itemVariants}
               className="relative"
             >
-              {/* Step Number Background */}
-              <div className="absolute -top-4 left-0 w-12 h-12 bg-[#E8493F] rounded-full flex items-center justify-center">
-                <span className="font-heading font-bold text-[#F7F2EA] text-xl">
+              {/* Step Number */}
+              <div className="absolute -top-6 left-6 w-12 h-12 bg-accent-coral rounded-full flex items-center justify-center">
+                <span className="font-heading font-bold text-white text-xl">
                   {step.step}
                 </span>
               </div>
 
               {/* Card */}
-              <div className="bg-[#1A1A1A] p-6 md:p-8 rounded-2xl border border-[#2A2A2A] mt-6 min-h-full hover:border-[#E8493F] transition-colors duration-300">
-                <h3 className="font-heading font-bold text-2xl text-[#F7F2EA] mb-3">
+              <div className="bg-bg-cream p-6 md:p-8 rounded-2xl border border-bg-blush mt-2 min-h-full">
+                <h3 className="font-heading font-bold text-xl text-text-charcoal mb-3 pt-2">
                   {step.title}
                 </h3>
-                <p className="text-[#B8B2A7] text-base leading-relaxed">
+                <p className="text-text-muted text-base leading-relaxed">
                   {step.description}
                 </p>
               </div>
-
-              {/* Connector Line (desktop only) */}
-              {step.step < howItWorks.length && (
-                <div className="hidden lg:block absolute top-16 -right-[calc(100%+1rem)] w-[calc(100%+2rem)] h-0.5 bg-gradient-to-r from-[#E8493F] to-transparent opacity-30" />
-              )}
             </motion.div>
           ))}
         </motion.div>

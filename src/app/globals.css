@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Variables for Brand Colors */
+/* Light warm premium color palette */
 :root {
-  --color-bg-primary: #0f0f0f;
-  --color-bg-surface: #1a1a1a;
+  --color-bg-cream: #fbf6ee;
+  --color-bg-white: #ffffff;
+  --color-bg-blush: #fff1ec;
+  --color-text-charcoal: #2a2320;
+  --color-text-muted: #6b605a;
   --color-accent-coral: #e8493f;
+  --color-accent-coral-dark: #c9372e;
   --color-accent-gold: #f5b335;
-  --color-text-primary: #f7f2ea;
-  --color-text-muted: #b8b2a7;
+  --color-dark-bg: #1a1514;
 }
 
 html {
@@ -17,7 +20,7 @@ html {
 }
 
 body {
-  @apply bg-[#0F0F0F] text-[#F7F2EA];
+  @apply bg-bg-cream text-text-charcoal;
 }
 
 /* Smooth scrolling for all browsers */
@@ -43,10 +46,10 @@ body {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible {
-  @apply outline-2 outline-offset-2 outline-[#E8493F];
+  @apply outline-2 outline-offset-2 outline-accent-coral;
 }
 
-/* Smooth link hover */
+/* Smooth link transitions */
 a {
   @apply transition-colors duration-200;
 }

@@ -28,15 +28,17 @@ export const metadata: Metadata = {
   title: siteConfig.seo.title,
   description: siteConfig.seo.metaDescription,
   keywords: siteConfig.seo.keywords,
-  viewport: 'width=device-width, initial-scale=1.0',
   icons: {
     icon: '/icon.png',
     apple: '/apple-icon.png',
   },
+  // TODO: Update with real domain when available
+  // metadataBase: new URL('https://ttscakes.com'),
   openGraph: {
     type: 'website',
     locale: 'en_NG',
-    url: 'https://ttscakes.com',
+    // TODO: Update with real domain
+    // url: 'https://ttscakes.com',
     title: siteConfig.seo.title,
     description: siteConfig.seo.metaDescription,
     siteName: siteConfig.name,
@@ -46,7 +48,6 @@ export const metadata: Metadata = {
     title: siteConfig.seo.title,
     description: siteConfig.seo.metaDescription,
   },
-  metadataBase: new URL('https://ttscakes.com'),
   robots: {
     index: true,
     follow: true,

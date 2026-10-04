@@ -9,18 +9,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand colors as CSS variables
+        // Light warm premium palette
         bg: {
-          primary: '#0F0F0F',
-          surface: '#1A1A1A',
-        },
-        accent: {
-          coral: '#E8493F',
-          gold: '#F5B335',
+          cream: '#FBF6EE',      // Primary background
+          white: '#FFFFFF',      // Card surface
+          blush: '#FFF1EC',      // Alternate sections
         },
         text: {
-          primary: '#F7F2EA',
-          muted: '#B8B2A7',
+          charcoal: '#2A2320',   // Primary text
+          muted: '#6B605A',      // Secondary text
+        },
+        accent: {
+          coral: '#E8493F',      // Decorative accents
+          'coral-dark': '#C9372E', // Button text, links (AA contrast)
+          gold: '#F5B335',       // Small touches only
+        },
+        dark: {
+          bg: '#1A1514',         // Dark section background
         },
       },
       fontFamily: {
@@ -33,6 +38,10 @@ const config: Config = {
       spacing: {
         '128': '32rem',
         '144': '36rem',
+      },
+      boxShadow: {
+        soft: '0 2px 12px rgba(42, 35, 32, 0.06)',
+        'soft-md': '0 4px 20px rgba(42, 35, 32, 0.08)',
       },
     },
   },

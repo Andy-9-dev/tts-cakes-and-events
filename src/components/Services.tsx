@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export default function Services() {
   return (
-    <section id="services" className="bg-[#0F0F0F] py-16 md:py-24">
+    <section id="services" className="bg-bg-cream py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -16,11 +16,11 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-[#F7F2EA] mb-4">
-            Our Services
+          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-charcoal mb-4">
+            Our services
           </h2>
-          <p className="text-[#B8B2A7] text-lg md:text-xl max-w-2xl mx-auto">
-            Everything you need for your celebration, from cakes to full event management
+          <p className="text-text-muted text-lg md:text-xl max-w-2xl mx-auto">
+            Everything you need, from cakes to complete event coordination
           </p>
         </motion.div>
 
@@ -32,7 +32,6 @@ export default function Services() {
               title={service.title}
               description={service.description}
               image={service.image}
-              cta={service.cta}
               message={service.message}
               index={index}
             />

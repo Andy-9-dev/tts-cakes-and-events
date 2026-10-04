@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { logoImage, siteConfig } from '@/data/site'
+import { Share2, Phone } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -16,32 +17,34 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-[#0F0F0F] border-t border-[#2A2A2A] py-12 md:py-16">
+    <footer className="bg-dark-bg text-white py-12 md:py-16 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 md:mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <Link href="#" className="flex items-center gap-2 mb-4">
-              <div className="relative w-10 h-10">
+            <Link href="#" className="flex items-center gap-3 mb-4">
+              {/* Circular Logo */}
+              <div className="relative w-12 h-12 rounded-full overflow-hidden bg-white flex items-center justify-center border-2 border-white">
                 <Image
                   src={logoImage.src}
                   alt={logoImage.alt}
                   fill
-                  className="object-contain"
+                  className="object-cover"
+                  sizes="48px"
                 />
               </div>
-              <span className="font-heading font-bold text-lg text-[#F7F2EA]">
-                TTS Cakes
+              <span className="font-heading font-bold text-lg text-white">
+                TTS
               </span>
             </Link>
-            <p className="text-[#B8B2A7] text-sm leading-relaxed">
+            <p className="text-white/60 text-sm leading-relaxed">
               Premium cakes, catering, and event planning in Lagos.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading font-bold text-[#F7F2EA] mb-4">
+            <h4 className="font-heading font-bold text-white mb-4">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -49,7 +52,7 @@ export default function Footer() {
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-[#B8B2A7] hover:text-[#E8493F] transition-colors text-sm"
+                    className="text-white/60 hover:text-accent-coral transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -60,7 +63,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-heading font-bold text-[#F7F2EA] mb-4">
+            <h4 className="font-heading font-bold text-white mb-4">
               Services
             </h4>
             <ul className="space-y-2">
@@ -73,7 +76,7 @@ export default function Footer() {
                 <li key={service}>
                   <Link
                     href="#services"
-                    className="text-[#B8B2A7] hover:text-[#E8493F] transition-colors text-sm"
+                    className="text-white/60 hover:text-accent-coral transition-colors text-sm"
                   >
                     {service}
                   </Link>
@@ -84,7 +87,7 @@ export default function Footer() {
 
           {/* Connect */}
           <div>
-            <h4 className="font-heading font-bold text-[#F7F2EA] mb-4">
+            <h4 className="font-heading font-bold text-white mb-4">
               Connect
             </h4>
             <div className="space-y-3">
@@ -93,30 +96,26 @@ export default function Footer() {
                   href={siteConfig.social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-[#B8B2A7] hover:text-[#E8493F] transition-colors text-sm"
+                  className="flex items-center gap-2 text-white/60 hover:text-accent-coral transition-colors text-sm"
                 >
-                  <span>📸</span> Instagram
+                  <Share2 size={16} />
+                  Instagram
                 </a>
               )}
               <a
                 href={`tel:${siteConfig.contact.phoneNumbers[0]}`}
-                className="flex items-center gap-2 text-[#B8B2A7] hover:text-[#E8493F] transition-colors text-sm"
+                className="flex items-center gap-2 text-white/60 hover:text-accent-coral transition-colors text-sm"
               >
-                <span>📱</span> Call Us
-              </a>
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-2 text-[#B8B2A7] hover:text-[#E8493F] transition-colors text-sm"
-              >
-                <span>✉️</span> Email
+                <Phone size={16} />
+                Call us
               </a>
             </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[#2A2A2A] py-8">
-          <p className="text-[#B8B2A7] text-center text-sm">
+        <div className="border-t border-white/10 py-8">
+          <p className="text-white/60 text-center text-sm">
             &copy; {currentYear} {siteConfig.name}. All rights reserved.
           </p>
         </div>

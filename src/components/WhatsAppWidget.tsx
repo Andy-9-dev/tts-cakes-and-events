@@ -12,23 +12,23 @@ interface QuickOption {
 
 const quickOptions: QuickOption[] = [
   {
-    label: '🎂 Order a cake',
+    label: 'Order a cake',
     message: "Hi, I'd like to order a custom cake. My event date is...",
   },
   {
-    label: '🍗 Order food / catering',
+    label: 'Order food / catering',
     message: "Hi, I'd like to order food for my event. I'm interested in...",
   },
   {
-    label: '🥘 Small chops for an event',
+    label: 'Small chops for an event',
     message: "Hi, I'd like to order small chops for my event. I need...",
   },
   {
-    label: '✨ Plan an event',
+    label: 'Plan an event',
     message: "Hi, I need help planning and decorating my event. The date is...",
   },
   {
-    label: '❓ Ask a question',
+    label: 'Ask a question',
     message: "Hi! I have a question about your services...",
   },
 ]
@@ -51,7 +51,7 @@ export default function WhatsAppWidget() {
     }
   }, [isOpen])
 
-  const defaultMessage = "Hi! 👋 What can we help you with today?"
+  const defaultMessage = "Hi! What can we help you with today?"
   const defaultLink = getWhatsAppLink(defaultMessage)
 
   return (
@@ -69,7 +69,7 @@ export default function WhatsAppWidget() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsOpen(!isOpen)}
-              className="w-16 h-16 bg-[#25D366] hover:bg-[#1fa857] text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow duration-200"
+              className="w-16 h-16 bg-accent-coral hover:bg-accent-coral-dark text-white rounded-full flex items-center justify-center shadow-soft-md hover:shadow-soft transition-all duration-200"
               aria-label="Open WhatsApp chat"
             >
               {isOpen ? (
@@ -105,19 +105,19 @@ export default function WhatsAppWidget() {
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 20 }}
-              className="fixed bottom-24 right-6 z-40 bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl shadow-2xl max-w-xs w-full md:max-w-sm overflow-hidden"
+              className="fixed bottom-24 right-6 z-40 bg-bg-white border-2 border-accent-coral rounded-2xl shadow-soft-md max-w-xs w-full md:max-w-sm overflow-hidden"
             >
               {/* Header */}
-              <div className="bg-[#25D366] p-4 text-white">
+              <div className="bg-accent-coral p-4 text-white">
                 <p className="font-heading font-bold text-lg">TTS Cakes & Events</p>
-                <p className="text-sm opacity-90">Usually replies instantly</p>
+                <p className="text-sm opacity-90">We reply instantly</p>
               </div>
 
               {/* Content */}
               <div className="p-4 space-y-3 max-h-96 overflow-y-auto">
                 {/* Greeting */}
-                <div className="mb-4 p-3 bg-[#0F0F0F] rounded-lg">
-                  <p className="text-[#B8B2A7] text-sm leading-relaxed">
+                <div className="mb-4 p-3 bg-bg-blush rounded-lg">
+                  <p className="text-text-charcoal text-sm leading-relaxed">
                     Hi! 👋 What can we help you with today?
                   </p>
                 </div>
@@ -131,7 +131,7 @@ export default function WhatsAppWidget() {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => setIsOpen(false)}
-                      className="block w-full text-left p-3 bg-[#0F0F0F] hover:bg-[#2A2A2A] border border-[#2A2A2A] rounded-lg text-[#F7F2EA] hover:text-[#E8493F] transition-all duration-200 text-sm font-medium group"
+                      className="block w-full text-left p-3 bg-bg-cream hover:bg-bg-blush border border-bg-blush rounded-lg text-text-charcoal hover:text-accent-coral transition-all duration-200 text-sm font-medium group"
                     >
                       <span className="group-hover:translate-x-1 inline-block transition-transform">
                         {option.label}
@@ -141,13 +141,13 @@ export default function WhatsAppWidget() {
                 </div>
 
                 {/* Or direct message */}
-                <div className="pt-2 border-t border-[#2A2A2A] mt-4">
+                <div className="pt-2 border-t border-bg-blush mt-4">
                   <a
                     href={defaultLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1fa857] text-white p-3 rounded-lg font-semibold transition-colors text-sm"
+                    className="flex items-center justify-center gap-2 w-full bg-accent-coral hover:bg-accent-coral-dark text-white p-3 rounded-lg font-semibold transition-colors text-sm"
                   >
                     <Send size={16} />
                     Send Message
@@ -156,8 +156,8 @@ export default function WhatsAppWidget() {
               </div>
 
               {/* Footer Info */}
-              <div className="bg-[#0F0F0F] px-4 py-3 border-t border-[#2A2A2A] text-center">
-                <p className="text-[#B8B2A7] text-xs">
+              <div className="bg-bg-cream px-4 py-3 border-t border-bg-blush text-center">
+                <p className="text-text-muted text-xs">
                   {siteConfig.contact.location}
                 </p>
               </div>
