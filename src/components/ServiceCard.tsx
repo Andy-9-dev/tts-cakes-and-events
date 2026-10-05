@@ -36,7 +36,7 @@ export default function ServiceCard({
       className="group bg-bg-white rounded-2xl overflow-hidden shadow-soft hover:shadow-soft-md transition-all duration-300 h-full flex flex-col"
     >
       {/* Image Container */}
-      <div className="relative w-full h-48 md:h-56 bg-bg-blush overflow-hidden">
+      <div className="relative w-full h-40 sm:h-48 md:h-56 bg-bg-blush overflow-hidden">
         {isEventPlanning ? (
           <div className="w-full h-full flex flex-col items-center justify-center p-8 text-center">
             <div className="text-4xl mb-2">✨</div>

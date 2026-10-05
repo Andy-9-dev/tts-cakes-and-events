@@ -45,14 +45,14 @@ export default function TrustStrip() {
   }
 
   return (
-    <section className="bg-bg-white py-12 md:py-16 border-y border-bg-blush">
+    <section className="bg-bg-white py-12 md:py-16 lg:py-20 border-y border-bg-blush">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8"
         >
           {trustItems.map((item, index) => {
             const Icon = item.icon
@@ -62,13 +62,13 @@ export default function TrustStrip() {
                 variants={itemVariants}
                 className="flex flex-col items-center text-center"
               >
-                <div className="w-14 h-14 rounded-full bg-bg-blush flex items-center justify-center mb-4">
-                  <Icon className="text-accent-coral" size={28} />
+                <div className="w-12 md:w-14 h-12 md:h-14 rounded-full bg-bg-blush flex items-center justify-center mb-3 md:mb-4">
+                  <Icon className="text-accent-coral" size={24} />
                 </div>
-                <h3 className="font-heading font-semibold text-text-charcoal mb-2">
+                <h3 className="font-heading font-semibold text-text-charcoal mb-1 md:mb-2 text-sm md:text-base">
                   {item.title}
                 </h3>
-                <p className="text-text-muted text-sm">
+                <p className="text-text-muted text-xs md:text-sm">
                   {item.description}
                 </p>
               </motion.div>

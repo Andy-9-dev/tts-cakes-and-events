@@ -27,7 +27,7 @@ export default function Testimonials() {
   const displayTestimonials = testimonials.slice(0, 2)
 
   return (
-    <section className="bg-bg-cream py-16 md:py-24">
+    <section className="bg-bg-cream py-12 md:py-16 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -35,9 +35,9 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-8 md:mb-12 lg:mb-16"
         >
-          <h2 className="font-heading font-bold text-4xl md:text-5xl text-text-charcoal mb-4">
+          <h2 className="font-heading font-bold text-3xl sm:text-4xl md:text-5xl text-text-charcoal mb-3 md:mb-4">
             What our clients say
           </h2>
         </motion.div>
@@ -48,7 +48,7 @@ export default function Testimonials() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-2xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 max-w-3xl mx-auto"
         >
           {displayTestimonials.map((testimonial) => {
             // Check if name is still a placeholder
@@ -58,20 +58,20 @@ export default function Testimonials() {
               <motion.div
                 key={testimonial.id}
                 variants={itemVariants}
-                className="bg-bg-white p-6 md:p-8 rounded-2xl shadow-soft hover:shadow-soft-md transition-all duration-300"
+                className="bg-bg-white p-4 md:p-6 lg:p-8 rounded-2xl shadow-soft hover:shadow-soft-md transition-all duration-300"
               >
                 {/* Quote */}
-                <p className="text-text-charcoal text-base md:text-lg leading-relaxed mb-6 italic">
+                <p className="text-text-charcoal text-sm md:text-base lg:text-lg leading-relaxed mb-4 md:mb-6 italic break-words">
                   "{testimonial.quote}"
                 </p>
 
                 {/* Name and Detail - hidden if placeholder */}
                 {!isPlaceholder && (
                   <div>
-                    <p className="font-heading font-bold text-text-charcoal text-base">
+                    <p className="font-heading font-bold text-text-charcoal text-sm md:text-base break-words">
                       {testimonial.name}
                     </p>
-                    <p className="text-accent-coral-dark text-sm">
+                    <p className="text-accent-coral-dark text-xs md:text-sm break-words">
                       {testimonial.detail}
                     </p>
                   </div>
