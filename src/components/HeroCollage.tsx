@@ -12,6 +12,7 @@ const RIGHT_IDS = [
   'smallchops-boxed-bulk-order',
   'food-meat-skewers',
   'smallchops-platter-mixed',
+  'pastry-meat-pies-rack',
 ]
 
 function pick(ids: string[]) {

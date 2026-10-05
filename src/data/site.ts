@@ -64,7 +64,7 @@ export const services = [
     id: 'food',
     title: 'Food & Catering',
     description:
-      'Delicious traditional Nigerian food: jollof rice, fried rice, moi moi, efo riro, peppered meat, and skewers.',
+      'Delicious traditional Nigerian food: jollof rice, fried rice, moi moi, efo riro, peppered meat, skewers, meat pies, and doughnuts.',
     image: 'food-jollof-chicken-plantain',
     message: "Hi, I'd like to order food for my event. I'm interested in...",
   },
@@ -217,21 +217,47 @@ export const galleryItems = [
     categoryTag: 'Events',
   },
 
-  // Optional images (add when available)
-  // {
-  //   id: 'cake-wafer-paper-pink-flowers',
-  //   src: '/images/cake-wafer-paper-pink-flowers.webp',
-  //   alt: 'Delicate cake with pink wafer paper flowers',
-  //   category: 'Cakes',
-  //   categoryTag: 'Cakes',
-  // },
-  // {
-  //   id: 'pastry-meat-pies-rack',
-  //   src: '/images/pastry-meat-pies-rack.webp',
-  //   alt: 'Fresh meat pies cooling on wire rack',
-  //   category: 'Food',
-  //   categoryTag: 'Food',
-  // },
+  // Pastries & Snacks
+  {
+    id: 'pastry-meat-pies-rack',
+    src: '/images/pastry-meat-pies-rack.webp',
+    alt: 'Meat pie',
+    description: 'Freshly baked meat pies on a cooling rack',
+    category: 'Pastries & Snacks',
+    categoryTag: 'Pastries & Snacks',
+  },
+  {
+    id: 'smallchops-dough-balls-tray',
+    src: '/images/smallchops-dough-balls-tray.webp',
+    alt: 'Doughnuts',
+    description: 'Golden fried doughnuts in a foil tray',
+    category: 'Pastries & Snacks',
+    categoryTag: 'Pastries & Snacks',
+  },
+  {
+    id: 'smallchops-puffpuff-spoon',
+    src: '/images/smallchops-puffpuff-spoon.webp',
+    alt: 'Doughnuts',
+    description: 'Doughnuts on a slotted spoon',
+    category: 'Pastries & Snacks',
+    categoryTag: 'Pastries & Snacks',
+  },
+
+  // Optional images (pending approval)
+  {
+    id: 'cake-wafer-paper-pink-flowers',
+    src: '/images/cake-wafer-paper-pink-flowers.webp',
+    alt: 'Delicate cake with pink wafer paper flowers',
+    category: 'Cakes',
+    categoryTag: 'Cakes',
+  },
+  {
+    id: 'about-makeup-cake-owner',
+    src: '/images/about-makeup-cake-owner.webp',
+    alt: 'Owner of TTS Cakes applying makeup to a decorative cake',
+    category: 'About',
+    categoryTag: 'About',
+  },
 ];
 
 // ============================================
@@ -312,6 +338,15 @@ export const videoItems = [
     poster: '/videos/video-smallchops-trays.jpg',
   },
 ];
+
+// ============================================
+// ABOUT SECTION IMAGE
+// ============================================
+
+export const aboutImage = {
+  src: '/images/about-chef-portrait.webp',
+  alt: 'Chef Jane in her white chef jacket posing at an event',
+};
 
 // ============================================
 // EXPORT LOGO REFERENCE
