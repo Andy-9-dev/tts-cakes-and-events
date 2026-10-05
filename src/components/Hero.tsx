@@ -1,18 +1,11 @@
 'use client'
 
-import Image from 'next/image'
-import { getWhatsAppLink, galleryItems } from '@/data/site'
+import { getWhatsAppLink } from '@/data/site'
 import { motion } from 'framer-motion'
 import { MessageCircle, Eye } from 'lucide-react'
+import HeroCollage from './HeroCollage'
 
 export default function Hero() {
-  const heroImages = [
-    'event-wedding-cake-three-tier',
-    'food-jollof-chicken-plantain',
-    'cake-oreo-drip',
-    'smallchops-boxed-bulk-order',
-  ]
-
   const features = [
     'Custom cakes',
     'Small chops',
@@ -32,7 +25,7 @@ export default function Hero() {
   }
 
   return (
-    <section id="hero" className="relative bg-bg-cream overflow-hidden min-h-[100svh] lg:min-h-[80vh] flex flex-col justify-center">
+    <section id="hero" className="relative bg-bg-cream overflow-hidden min-h-[80svh] lg:min-h-[80vh] flex flex-col justify-center">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-24 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center">
           {/* Left: Text Content */}
@@ -106,38 +99,14 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Image Collage - 2x2 Grid */}
+          {/* Right: Image carousel */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-2 gap-3 md:gap-4 lg:gap-6 order-2 lg:order-none"
+            className="order-2 lg:order-none"
           >
-            {heroImages.map((imageId, index) => {
-              const item = galleryItems.find((i) => i.id === imageId)
-              if (!item) return null
-
-              return (
-                <motion.div
-                  key={imageId}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 + index * 0.05 }}
-                  className="relative rounded-2xl overflow-hidden shadow-soft"
-                >
-                  <div className="relative w-full aspect-[4/5]">
-                    <Image
-                      src={item.src}
-                      alt={item.alt}
-                      fill
-                      priority={index < 2}
-                      className="object-cover"
-                      sizes="(max-width: 768px) 45vw, (max-width: 1024px) 25vw, 22vw"
-                    />
-                  </div>
-                </motion.div>
-              )
-            })}
+            <HeroCollage />
           </motion.div>
         </div>
       </div>

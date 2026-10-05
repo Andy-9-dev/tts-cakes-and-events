@@ -59,3 +59,24 @@ a {
 img {
   @apply max-w-full h-auto;
 }
+
+
+@keyframes marquee-up {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-50%); }
+}
+@keyframes marquee-down {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0); }
+}
+.animate-marquee-up   { animation: marquee-up 38s linear infinite; }
+.animate-marquee-down { animation: marquee-down 44s linear infinite; }
+
+@media (hover: hover) {
+  .marquee:hover .animate-marquee-up,
+  .marquee:hover .animate-marquee-down { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-up,
+  .animate-marquee-down { animation: none; }
+}
